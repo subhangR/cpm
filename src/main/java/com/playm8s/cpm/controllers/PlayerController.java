@@ -41,7 +41,7 @@ public class PlayerController {
     @RequestMapping(path="/{id}",method= RequestMethod.GET)
     Player getPlayer(@PathVariable("id") String  playerId) {
        Optional<Player> player =  playerRepository.findById(playerId);
-       return player.get();
+       return player.orElse(null);
     }
 
     /** show All Players.
