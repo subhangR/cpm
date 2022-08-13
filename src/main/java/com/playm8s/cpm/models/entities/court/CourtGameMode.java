@@ -4,17 +4,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name="court_game_modes")
-public class CourtGameMode {
+public class CourtGameMode implements Serializable {
 
     @Id
-    String id;
-
     @Column(name="court_id")
     String courtId;
 
+    @Id
     @Column(name="game_mode_id")
     String gameModeId;
 }

@@ -18,6 +18,6 @@ public class TestRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        playerRepository.findAll().forEach(System.out::println);
     }
 }
