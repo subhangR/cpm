@@ -1,3 +1,7 @@
+Sample curl to 
+
+
+
 <h1>steps to run in local.</h1>
 
 first time
@@ -22,11 +26,13 @@ first time
 
 
 
-<h1>Steps to run your in server</h1>
+<h1>Steps to run your code in server</h1>
     after pushing the code to "my_branch" you can use these steps to run your code in aws.
-
+    
     ssh -i playm8s.pem ubuntu@3.6.86.169
     cd cpm
     git checkout -b <my_branch>
     git pull origin <my_branch>
     ./run.sh
+
+NOTE : run.sh will run your code in background, so make sure that there are no conflicts in ports with other java processes that are running.
