@@ -1,6 +1,7 @@
 package com.playm8s.cpm.models.entities.game;
 
 public enum GameStatus {
+    PENDING_ACCEPT,CONFIRMED,WAITING_TO_COMPLETE,DONE
 }
 /*
     CREATE TABLE arenas(
