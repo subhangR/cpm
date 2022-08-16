@@ -1,6 +1,7 @@
 package com.playm8s.cpm.services;
 
 import okhttp3.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,9 @@ import java.io.IOException;
 @Service
 public class DistanceFinder implements CommandLineRunner {
 
-    private final String API_KEY= "AIzaSyAyi-y5KVzrElZ1ebk8IZdGrYpKoez6Deo";
+
+    @Value("${google.maps.apikey}")
+    private  String API_KEY;
 
     public Response distanceRequest(String origin, String destination) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder()
