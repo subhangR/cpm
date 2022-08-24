@@ -1,19 +1,27 @@
 package com.playm8s.cpm.models.entities.game;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import java.util.List;
 
+@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Lobby {
 
-        @JsonProperty("lobby_id")
         String lobbyId;
 
+        LobbyPlayer lobbyLeader;
 
-        @JsonProperty("lobby_leader")
-        String lobbyLeader;
+        List<LobbyPlayer> lobbyPlayers;
 
-        @JsonProperty("other_players")
-        List<LobbyPlayer> otherPlayers;
+        public int getPlayerCount() {
+           if(lobbyLeader == null) return 0;
+           return lobbyPlayers == null ?  0 : lobbyPlayers.size();
+        }
 
 }

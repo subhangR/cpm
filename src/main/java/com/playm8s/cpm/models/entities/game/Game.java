@@ -1,40 +1,41 @@
 package com.playm8s.cpm.models.entities.game;
 
+import com.playm8s.cpm.models.dtos.matchmaking.MatchMakeRequest;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.List;
 
-@Entity
-@Table(name = "games")
+
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Game {
 
-    @Id
-    @Column(name="game_id")
     String gameId;
 
-    @Column(name="court_id")
+    String gameModeId;
+
+    String playerId;
+
+    Lobby lobby;
+
+    MatchMakeRequest matchMakeRequest;
+
+    List<MatchMakeRequest> allMatchMakeRequests;
+
     String courtId;
 
-    @Column(name="start_time")
-    Timestamp startTime;
+    LocalDate startTime;
 
-    @Column(name="end_time")
-    Timestamp endTime;
+    LocalDate endTime;
 
-    @Column(name="status")
     @Enumerated(EnumType.ORDINAL)
     GameStatus status;
 
-    @Column(name="game_mode_id")
-    String gameModeId;
-
 }
-/*
-    CREATE TABLE arenas(
-        arena_id INT PRIMARY KEY    NOT NULL,
-        name  text   NOT NULL,
-        location_id text NOT NULL
-);
- */

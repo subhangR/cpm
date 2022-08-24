@@ -1,21 +1,33 @@
 package com.playm8s.cpm.models.entities.court;
 
+import com.playm8s.cpm.models.entities.common.Location;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
-@Entity
-@Table(name="arenas")
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Arena {
 
     @Id
-    @Column(name="arena_id")
     String arenaId;
 
     String name;
 
-    String locationId;
+    Location locationId;
+
+    String contactNumber;
+
+    List<Court> courts;
 
 }
 /*

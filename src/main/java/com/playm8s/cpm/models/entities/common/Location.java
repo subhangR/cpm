@@ -1,6 +1,6 @@
 package com.playm8s.cpm.models.entities.common;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +10,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "locations")
 @Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Location {
 
+    public Location(Double latitude,Double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
     @Id
     @Column(name="id")
     String locationId;
@@ -24,6 +33,12 @@ public class Location {
 
     @Column(name="longitude")
     Double longitude;
+
+
+
+    public String getCoordinatesAsString() {
+        return latitude.toString() + "," + longitude.toString();
+    }
 
 }
 /*

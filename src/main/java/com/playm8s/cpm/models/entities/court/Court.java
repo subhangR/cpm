@@ -1,12 +1,19 @@
 package com.playm8s.cpm.models.entities.court;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.playm8s.cpm.models.entities.common.Location;
+import com.playm8s.cpm.models.entities.game.modes.GameMode;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
-@Table(name="courts")
+import javax.persistence.*;
+import java.util.List;
+
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Court {
 
     @Id
@@ -17,10 +24,13 @@ public class Court {
     String arenaId;
 
     @Column(name="sport_id")
-    String sportId;
+    List<GameMode> supportedGameModes;
 
     @Column(name="name")
     String name;
+
+    @Transient
+    Location location;
 
 }
 /*

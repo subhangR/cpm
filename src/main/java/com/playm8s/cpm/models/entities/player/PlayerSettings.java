@@ -1,29 +1,25 @@
 package com.playm8s.cpm.models.entities.player;
 
 import com.playm8s.cpm.models.core.enums.DistanceLevel;
+import com.playm8s.cpm.models.entities.common.Location;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="player_settings")
+@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlayerSettings {
 
-    @Id
-    @Column(name="player_id")
     String playerId;
 
-    @Column(name="current_city")
     int currentCity;
 
-    @Column(name="distance_level")
-    @Enumerated(EnumType.ORDINAL)
     DistanceLevel distanceLevel;
 
+    Location location;
+
 }
-/*
-    CREATE TABLE arenas(
-        arena_id INT PRIMARY KEY    NOT NULL,
-        name  text   NOT NULL,
-        location_id text NOT NULL
-);
- */

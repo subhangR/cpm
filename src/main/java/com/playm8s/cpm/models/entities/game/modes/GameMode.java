@@ -1,6 +1,9 @@
-package com.playm8s.cpm.models.entities.game;
+package com.playm8s.cpm.models.entities.game.modes;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +13,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "game_modes")
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class GameMode {
 
     @Id
@@ -22,6 +28,11 @@ public class GameMode {
 
     @Column(name="num_players")
     int numOfPlayers;
+
+    String rules;
+
+    String description;
+
 
 }
 /*

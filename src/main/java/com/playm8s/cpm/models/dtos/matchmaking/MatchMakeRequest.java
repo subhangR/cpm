@@ -16,8 +16,8 @@ package com.playm8s.cpm.models.dtos.matchmaking;
  */
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.playm8s.cpm.models.entities.common.Location;
 import com.playm8s.cpm.models.entities.game.Lobby;
-import com.playm8s.cpm.models.entities.player.PlayerGameSettings;
 import com.playm8s.cpm.models.entities.player.PlayerSettings;
 import lombok.*;
 
@@ -26,24 +26,13 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class MatchMakeRequest {
 
-    @JsonProperty("player_id")
-    String playerId;
+    String matchMakeRequestId;
 
-    @JsonProperty("game_mode_id")
     String gameModeId;
 
-    @JsonProperty("start_location")
-    String startLocation;
-
-    @JsonProperty("player_settings")
-    PlayerSettings playerSettings;
-
-    @JsonProperty("player_game_settings")
-    PlayerGameSettings playerGameSettings;
-
-    @JsonProperty("lobby_details")
-    Lobby lobbyDetails;
+    Lobby lobby;
 
 }

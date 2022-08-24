@@ -1,19 +1,24 @@
 package com.playm8s.cpm.models.entities.game;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
-
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Sport {
-    @Id
+
     String id;
 
-    @Column(name="name")
     String name;
 
-    @Column(name="description")
     String description;
 
-    @Column(name="rules")
     String rules;
 }
 /*
