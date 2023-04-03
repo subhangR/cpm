@@ -17,7 +17,6 @@ public class DistanceFinder implements CommandLineRunner {
     private  String API_KEY;
 
     public Response distanceMatrixRequest(List<String> origins, List<String> destinations) throws IOException {
-
         String originString = getCombinedLocationsString(origins);
         String destinationString = getCombinedLocationsString(destinations);
         Response response = distanceRequest(originString,destinationString);

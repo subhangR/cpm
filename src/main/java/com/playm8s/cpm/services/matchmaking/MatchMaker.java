@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import com.playm8s.cpm.models.entities.court.CourtInventory;
 import com.playm8s.cpm.models.entities.game.Lobby;
 import com.playm8s.cpm.models.entities.game.LobbyPlayer;
-import com.playm8s.cpm.models.entities.player.Player;
+import com.playm8s.cpm.models.entities.player.User;
+import com.playm8s.cpm.repositories.MongoRepository;
 import com.playm8s.cpm.services.CourtService;
-import com.playm8s.cpm.services.DistanceFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,9 @@ public class MatchMaker {
     @Autowired
     CourtService courtService;
 
+    @Autowired
+    MongoRepository mongoRepository;
+
     Logger log = LoggerFactory.getLogger(MatchMaker.class);
     HashMap<CourtInventory,Integer> possibleCourtLobbies;
     HashMap<Lobby,Integer> possibleLobbyCourts;
@@ -33,14 +36,15 @@ public class MatchMaker {
     HashMap<String,CourtInventoryNode> courtInventoryNode;
 
 
-    Map<String,Player> playerMap;
+    Map<String, User> playerMap;
     Map<Lobby,Set<CourtInventory>> lobbySuitableCourtsMap;
     Map<CourtInventory, Set<Lobby>> courtSuitableLobbiesMap;
 
     Set<CourtInventory> courtSet;
 
-    public void findMatches(List<MatchMakeRequest> matchMakeRequests) {
-        //
+    public void findMatches() {
+
+        List<MatchMakeRequest> matchMakeRequests = mongoRepository.fetchAllActiveMatchRequests();
         List<String> playerIds = new ArrayList<>();
         lobbySuitableCourtsMap = new HashMap<>();
         TreeSet<CourtInventoryNode> liveCourtSet = new TreeSet<>(new CourtInventoryNodeComparator());
@@ -50,14 +54,14 @@ public class MatchMaker {
             Lobby lobby = matchMakeRequest.getLobby();
             playerIds.addAll(
                     lobby.getLobbyPlayers().stream()
-                            .map(LobbyPlayer::getPlayerId)
+                            .map(LobbyPlayer::getUserId)
                             .collect(Collectors.toList())
             );
 
             Set<CourtInventory> lobbySuitableCourts = courtService.findLobbySuitableCourts(matchMakeRequest);
-
             for(CourtInventory court: lobbySuitableCourts) {
-                Set<Lobby> courtLobbiesSet = courtSuitableLobbiesMap.containsKey(court) ? courtSuitableLobbiesMap.get(court) : new HashSet<>();
+                Set<Lobby> courtLobbiesSet = courtSuitableLobbiesMap.containsKey(court) ?
+                        courtSuitableLobbiesMap.get(court) : new HashSet<>();
                 courtLobbiesSet.add(lobby);
                 courtSet.add(court);
                 courtSuitableLobbiesMap.put(court,courtLobbiesSet);
@@ -98,7 +102,7 @@ public class MatchMaker {
 
     }
 
-    Map<String,Player> getPlayerMap(List<String> playerIds) {
+    Map<String, User> getPlayerMap(List<String> playerIds) {
         //TODO
         return  null;
     }

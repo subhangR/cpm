@@ -15,10 +15,9 @@ package com.playm8s.cpm.models.dtos.matchmaking;
 }
  */
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.playm8s.cpm.models.entities.common.Location;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.playm8s.cpm.models.entities.game.Lobby;
-import com.playm8s.cpm.models.entities.player.PlayerSettings;
 import lombok.*;
 
 @Data
@@ -27,12 +26,20 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MatchMakeRequest {
-
-    String matchMakeRequestId;
+    String requestId;
 
     String gameModeId;
 
     Lobby lobby;
+
+    int numBots;
+    public String get_id() {
+        return requestId;
+    }
+    public void set_id(String id) {
+        this.requestId = id;
+    }
 
 }

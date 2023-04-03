@@ -1,12 +1,7 @@
 package com.playm8s.cpm.models.entities.game;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.playm8s.cpm.models.entities.common.Location;
-import com.playm8s.cpm.models.entities.player.PlayerSettings;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.playm8s.cpm.models.entities.player.UserSettings;
+import lombok.*;
 
 @Data
 @Getter
@@ -14,13 +9,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class LobbyPlayer {
 
-    public LobbyPlayer(PlayerSettings playerSettings) {
-        this.playerSettings = playerSettings;
-        this.playerId = playerSettings.getPlayerId();
+    public LobbyPlayer(UserSettings userSettings) {
+        this.userSettings = userSettings;
+        this.userId = userSettings.getUserId();
     }
-    String playerId;
+    String userId;
+    UserSettings userSettings;
 
-
-    PlayerSettings playerSettings;
 
 }

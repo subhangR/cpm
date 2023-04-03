@@ -5,14 +5,10 @@ import com.playm8s.cpm.models.dtos.matchmaking.MatchMakeRequest;
 import com.playm8s.cpm.models.entities.common.Location;
 import com.playm8s.cpm.models.entities.game.Lobby;
 import com.playm8s.cpm.models.entities.game.LobbyPlayer;
-import com.playm8s.cpm.models.entities.player.PlayerSettings;
+import com.playm8s.cpm.models.entities.player.UserSettings;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.engine.support.discovery.SelectorResolver;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
-import javax.persistence.Lob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -42,31 +38,31 @@ public class SetTest {
         Location playTimeGachibowli = new Location(17.469739896159886, 78.35579243441298);
         Location smBadminton = new Location(17.461616781454843, 78.36245069008304);
 
-        PlayerSettings busiSettings = PlayerSettings
+        UserSettings busiSettings = UserSettings
                 .builder()
-                .playerId("busi")
+                .userId("busi")
                 .currentCity(1)
                 .location(golfEdge)
                 .distanceLevel(DistanceLevel.MEDIUM)
                 .build();
-        PlayerSettings jeevanSettings = PlayerSettings
+        UserSettings jeevanSettings = UserSettings
                 .builder()
-                .playerId("jeevan")
+                .userId("jeevan")
                 .currentCity(1)
                 .location(jeevanHouse)
                 .distanceLevel(DistanceLevel.MEDIUM)
                 .build();
-        PlayerSettings kushalSettings = PlayerSettings
+        UserSettings kushalSettings = UserSettings
                 .builder()
-                .playerId("kushal")
+                .userId("kushal")
                 .currentCity(1)
                 .location(kushalHouse)
                 .distanceLevel(DistanceLevel.MEDIUM)
                 .build();
 
-        PlayerSettings manojSettings = PlayerSettings
+        UserSettings manojSettings = UserSettings
                 .builder()
-                .playerId("manoj")
+                .userId("manoj")
                 .currentCity(1)
                 .location(manojHouse)
                 .distanceLevel(DistanceLevel.MEDIUM)
@@ -110,22 +106,22 @@ public class SetTest {
                 .build();
 
         MatchMakeRequest matchMakeRequest1 = MatchMakeRequest.builder()
-                .matchMakeRequestId("request-1")
+                .requestId("request-1")
                 .gameModeId("badminton_2_v_2")
                 .lobby(lobby1)
                 .build();
         MatchMakeRequest matchMakeRequest2 = MatchMakeRequest.builder()
-                .matchMakeRequestId("request-2")
+                .requestId("request-2")
                 .gameModeId("badminton_2_v_2")
                 .lobby(lobby2)
                 .build();
         MatchMakeRequest matchMakeRequest3 = MatchMakeRequest.builder()
-                .matchMakeRequestId("request-3")
+                .requestId("request-3")
                 .gameModeId("badminton_2_v_2")
                 .lobby(lobby3)
                 .build();
         MatchMakeRequest matchMakeRequest4 = MatchMakeRequest.builder()
-                .matchMakeRequestId("request-4")
+                .requestId("request-4")
                 .gameModeId("badminton_2_v_2")
                 .lobby(lobby4)
                 .build();

@@ -2,11 +2,7 @@ package com.playm8s.cpm.services;
 
 import com.playm8s.cpm.models.dtos.matchmaking.MatchMakeRequest;
 import com.playm8s.cpm.models.entities.common.Location;
-import com.playm8s.cpm.models.entities.court.Court;
 import com.playm8s.cpm.models.entities.court.CourtInventory;
-import com.playm8s.cpm.models.entities.game.Lobby;
-import com.playm8s.cpm.models.entities.game.LobbyPlayer;
-import com.playm8s.cpm.models.entities.player.PlayerSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +25,7 @@ public class CourtService {
         List<CourtInventory> courts = getAllCourts();
         List<Location> startLocations = matchMakeRequest.getLobby()
                 .getLobbyPlayers().stream()
-                .map(lobbyPlayer -> lobbyPlayer.getPlayerSettings().getLocation())
+                .map(lobbyPlayer -> lobbyPlayer.getUserSettings().getLocation())
                 .collect(Collectors.toList());
 //
 //        List<Location> endLocations = courts.stream()

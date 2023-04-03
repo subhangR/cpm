@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class Game {
 
     String gameModeId;
 
-    String playerId;
+    String userId;
 
     Lobby lobby;
 
@@ -35,7 +34,12 @@ public class Game {
 
     LocalDate endTime;
 
-    @Enumerated(EnumType.ORDINAL)
     GameStatus status;
+    public String get_id() {
+        return gameId;
+    }
+    public void set_id(String id) {
+        this.gameId = id;
+    }
 
 }

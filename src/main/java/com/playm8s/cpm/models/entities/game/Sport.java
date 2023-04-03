@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 @Data
 @Getter
 @Setter
@@ -20,6 +18,10 @@ public class Sport {
     String description;
 
     String rules;
+
+    public String get_id() {
+        return id;
+    }
 }
 /*
     CREATE TABLE arenas(

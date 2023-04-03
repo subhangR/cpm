@@ -13,6 +13,7 @@ import java.util.Date;
 @Setter
 public class CourtInventory {
 
+    String _id;
     String courtId;
     String arenaId;
     Date date;
@@ -20,4 +21,5 @@ public class CourtInventory {
     Double price;
     LocalDate createdAt;
     LocalDate updatedAt;
+
 }

@@ -2,35 +2,36 @@ package com.playm8s.cpm.models.entities.court;
 
 import com.playm8s.cpm.models.entities.common.Location;
 import com.playm8s.cpm.models.entities.game.modes.GameMode;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Court {
 
-    @Id
-    @Column(name="court_id")
     String courtId;
 
-    @Column(name="arena_id")
     String arenaId;
 
-    @Column(name="sport_id")
     List<GameMode> supportedGameModes;
 
-    @Column(name="name")
     String name;
 
-    @Transient
     Location location;
+
+    public String get_id() {
+        return courtId;
+    }
+
+    public void set_id(String id) {
+        this.courtId = id;
+    }
+
 
 }
 /*
